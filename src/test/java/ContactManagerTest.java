@@ -8,7 +8,7 @@ class ContactManagerTest {
     @BeforeAll
     public static void setUpAll(){
         System.out.println("Should print before all tests. This method is static because creating the instance otherwise Junit can't execute this method");
-    }
+       }
 
     @BeforeEach
     public void setup(){
@@ -83,7 +83,7 @@ class ContactManagerTest {
     }
 
     @AfterAll
-    public void tearDownAll(){
+    public static void tearDownAll(){
         System.out.println("Should execute after all tests");
     }
 
