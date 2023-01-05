@@ -79,6 +79,8 @@ class ContactManagerTest {
             contactManager.addContact("Rashmi","Nishani","077defghijkl");
         });
     }
+
+    // Conditional Executions
     @EnabledOnOs(value = OS.LINUX,disabledReason = "Enabled on Linux OS")
     @Test
     @DisplayName("Should not create contact when the first name is null Linux")  // provides a customized name to the test method
@@ -88,6 +90,20 @@ class ContactManagerTest {
             contactManager.addContact(null,"Jayasekara","0773376993");
         });
     }
+
+    // Repeated Test
+    @DisplayName("Repeat contact creation test 5 times")
+    @RepeatedTest(value = 5, name = "Repeating Contact Creation Test {currentRepetition} of {totalRepetitions}")
+   // JUnit automatically fills up these values during the runtime
+    public void testCreateContactOnRepeatedTest(){
+        ContactManager contactManager = new ContactManager();
+        contactManager.addContact("Rashmi","Jayasekara","0773376993");
+        Assertions.assertFalse(contactManager.getAllContacts().isEmpty());
+        Assertions.assertEquals(1,contactManager.getAllContacts().size());
+    }
+
+
+
 
 
     @AfterEach
