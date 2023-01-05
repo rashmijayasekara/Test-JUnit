@@ -2,12 +2,14 @@ import org.junit.jupiter.api.*;
 
 
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)  // so JUnit will create only one instance of the class
 class ContactManagerTest {
     ContactManager contactManager;
 
     @BeforeAll
-    public static void setUpAll(){
+    public void setUpAll(){
         System.out.println("Should print before all tests. This method is static because creating the instance otherwise Junit can't execute this method");
+        System.out.println("With the implementation of the TestInstance this test class will only instantiate once there for this test method do not need to be a static method");
        }
 
     @BeforeEach
@@ -83,8 +85,9 @@ class ContactManagerTest {
     }
 
     @AfterAll
-    public static void tearDownAll(){
+    public void tearDownAll(){
         System.out.println("Should execute after all tests");
+        System.out.println("Previously this test method was a static method since it executes after all, but with the implementation of the annotation TestInstance no need this to be a static method");
     }
 
 }
